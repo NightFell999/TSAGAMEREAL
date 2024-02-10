@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int enemycurrentHealth;
     public int enemyDamage;
     public bool isEmpty;
+    public GameObject[] spells;
 
 
 

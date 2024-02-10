@@ -21,14 +21,14 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public int spellDMG;
     public int spellDifficulty; //1- Easy 2- Medium 3-Hard 4-Impossible
     public GameObject spellBlockContainer;
-    public GameObject summonPosition;
     public int spellCount;
+    [SerializeField]
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Player").GetComponent<Player>();
 
+        player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     
@@ -46,7 +46,7 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.name == "EmptySpell")
+        if (gameObject.name == "EmptySpell")
         {
             spellName = player.spells[0].GetComponent<Spell>().spellName;
             buttonGUI.text = spellName;
@@ -94,11 +94,15 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
            
     }
 
-    public void CastSpell()
+    public void CastSpell(GameObject summonPosition)
     {
-        player.spellCountCURRENT = 0;
-        player.spellCountMAX = spellCount;
-        player.hits = 0;
+        player = GameObject.Find("Player").GetComponent<Player>();
+        Debug.Log(player.name);
+            player.spellCountCURRENT = 0;
+            player.spellCountMAX = spellCount;
+            player.hits = 0;
+        
+        
 
         if(player.isPlayersTurn == true)
         {

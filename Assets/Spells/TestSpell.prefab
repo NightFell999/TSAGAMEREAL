@@ -157,8 +157,8 @@ MonoBehaviour:
   spellDMG: 1
   spellDifficulty: 0
   spellBlockContainer: {fileID: 4146110114118948048, guid: 79891b623c8cde440b7e351a118bf662, type: 3}
-  summonPosition: {fileID: 0}
   spellCount: 7
+  summonPosition: {fileID: 7619247236987051687, guid: 7bd5ec5c8cc506a41b319fb15521c0de, type: 3}
 --- !u!1 &5745297670678417505
 GameObject:
   m_ObjectHideFlags: 0

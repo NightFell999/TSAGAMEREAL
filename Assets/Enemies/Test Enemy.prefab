@@ -134,3 +134,5 @@ MonoBehaviour:
   enemycurrentHealth: 5
   enemyDamage: 1
   isEmpty: 0
+  spells:
+  - {fileID: 5745297670667089196, guid: ce86fa8a4ab64294a806266d2c4ebafc, type: 3}
