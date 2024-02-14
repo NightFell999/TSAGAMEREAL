@@ -24,7 +24,7 @@ public class NPC : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && playerisclose)
         {
-            zeroText();
+            
 
             if (dialoguePanel.activeInHierarchy)
             {
