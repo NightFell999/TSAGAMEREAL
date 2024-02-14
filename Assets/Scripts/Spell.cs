@@ -14,6 +14,7 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public Button button;
     public Player player;
     public bool isHovering = false;
+    public Sprite spellSprite;
 
     //Spell Stuff
     public string spellName;
