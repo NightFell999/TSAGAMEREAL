@@ -8,9 +8,11 @@ public class FightUI : MonoBehaviour
     public GameObject enemyUI;
     public GameObject preTextUI;
     public GameObject enemySummon;
+    public Canvas fightUICanvas;
     public Spell spell;
     public Fight fightScript;
     public Player player;
+    public Health health;
     public Enemy enemyScript;
     public GameObject pos1;
     public GameObject pos2;
@@ -19,6 +21,11 @@ public class FightUI : MonoBehaviour
     bool doOnce = true;
     public GameObject currentenemy;
     public int round = 0;
+    bool doDamageOnce = true;
+    bool[] deathArray;
+    bool allDead;
+    
+
 
     public int UITracker = 0;
 
@@ -38,6 +45,21 @@ public class FightUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        allDead = AllDead(fightScript.finalenemylist);
+
+        if(allDead == true)
+        {
+            round = 0;
+            UITracker = 0;
+            fightScript.EndFight();
+            fightUI.SetActive(false);
+            enemyUI.SetActive(false);
+        }
+
+
+
+
         currentenemy = fightScript.finalenemylist[round];
         enemyScript = currentenemy.GetComponent<Enemy>();
         if(round == fightScript.finalenemylist.Length)
@@ -71,17 +93,46 @@ public class FightUI : MonoBehaviour
         }
         else if(UITracker == 1)
         {
-            Debug.Log("SHOULD DISPLAY ");
+            Debug.Log("Choose A Spell");
             preTextUI.SetActive(false);
             fightUI.SetActive(true);
         }
         else if(UITracker == 2)
         {
+            Debug.Log("Do Damage");
+            
+            
+
+            if(doDamageOnce == true)
+            {
+                if (fightScript.currentSpell.singleTarget == true)
+                {
+                    health.DamageSingleEnemy();
+                }
+                else if (fightScript.currentSpell.singleTarget == false)
+                {
+                    health.DamageAllEnemy();
+                }
+
+                doDamageOnce = false;
+            }
+
+
+            fightUICanvas.enabled = true;
             fightUI.SetActive(false);
+
             enemyUI.SetActive(true);
         }
         else if(UITracker == 3)
         {
+            if(currentenemy.GetComponent<Enemy>().isDead == true)
+            {
+                round += 1;
+            }
+
+
+            doDamageOnce = true;
+
             Debug.Log("Enemies Turn");
             Debug.Log(enemySummon.name);
             enemyUI.SetActive(false);
@@ -96,23 +147,36 @@ public class FightUI : MonoBehaviour
         else if(UITracker == 4)
         {
             doOnce = true;
-            round += 1;
-            UITracker = 1;
-        }
-        
-        
-        /*
-        if (player.isPlayersTurn == true && player.isInFight == true)
-        {
-
-            fightUI.SetActive(true);
+            if(round == fightScript.finalenemylist.Length - 1)
+            {
+                round = 0;
+            }
+            else
+            {
+                round += 1;
+            }
             
+            player.spellCountCURRENT = 0;
+            UITracker = 1;
+            player.isPlayersTurn = true;
         }
-        else
-        {
-            Debug.Log("NOT ACTIVE");
-            fightUI.SetActive(false);
-        }
-        */
+        
+       
+
     }
+
+    bool AllDead(GameObject[] arr)
+    {
+        for(int i = 0; i < arr.Length; i++)
+        {
+            if(arr[i].GetComponent<Enemy>().isDead != true)
+            {
+                return false;
+            }
+        }
+
+        return true;
+
+    }
+    
 }

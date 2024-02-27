@@ -7,12 +7,18 @@ public class Enemy : MonoBehaviour
     public string enemyName;
     public int enemymaxHealth;
     public int enemycurrentHealth;
-    public int enemyDamage;
     public bool isEmpty;
+    public bool isDead;
     public GameObject[] spells;
 
 
-
+    private void Update()
+    {
+        if(enemycurrentHealth <= 0)
+        {
+            isDead = true;
+        }
+    }
 
 
 

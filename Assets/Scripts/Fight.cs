@@ -8,6 +8,8 @@ public class Fight : MonoBehaviour
     public World w;
     public int fightRound = 0;
 
+
+
     GameObject char1;
     GameObject char1FightPos;
     GameObject e1FightPos;
@@ -23,6 +25,7 @@ public class Fight : MonoBehaviour
 
     public GameObject[] firstenemylist = new GameObject[4];
     public GameObject[] finalenemylist;
+    public Spell currentSpell;
 
     bool DoOnce = true;
 
@@ -48,17 +51,11 @@ public class Fight : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-
-
-    }
-
     public void EndFight()
     {
+        p.spellCountMAX = 20;
+        p.spellCountCURRENT = 0;
+        p.hits = 0;
         p.distanceWalked = 0;
         p.fightChance = 100;
         Debug.Log("Fight has ended");

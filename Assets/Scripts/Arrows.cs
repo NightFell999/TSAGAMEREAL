@@ -46,7 +46,7 @@ public class Arrows : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        list = Physics2D.OverlapAreaAll(new Vector2(30, -7), new Vector2(40, -8.5f));
+        list = Physics2D.OverlapAreaAll(new Vector2(20, -7), new Vector2(40, -8.5f));
 
         Debug.Log(list.Length);
 
