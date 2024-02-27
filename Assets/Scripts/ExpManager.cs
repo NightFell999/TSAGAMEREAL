@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 
 public class ExpManager : MonoBehaviour
@@ -10,14 +11,17 @@ public class ExpManager : MonoBehaviour
 
     [Header("Experience")]
     [SerializeField] AnimationCurve experienceCurve;
+    public int MaxLevel;
+    public int MaxXp;
 
-    int currentlevel, totalExperience;
+    int currentlevel = 0, totalExperience = 0;
     int previousLevelExperience, nextLevelExperience;
 
     [Header("interface")]
     [SerializeField] TextMeshProUGUI leveltext;
     [SerializeField] TextMeshProUGUI experiencetext;
     [SerializeField] Image experienceFill;
+    
     
     
     
@@ -34,6 +38,11 @@ public class ExpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentlevel >= MaxLevel)
+        {
+          
+            experiencetext.text = "MAX Level";
+        }
         if (Input.GetKeyUp(KeyCode.P)) 
         {
             addexperience(5000);
@@ -42,7 +51,23 @@ public class ExpManager : MonoBehaviour
 
     public void addexperience(int amount)
     {
-        totalExperience += amount;
+        if (currentlevel >= MaxLevel)
+        {
+            return;
+        }
+        if (totalExperience + amount <= MaxXp)
+        {
+            totalExperience += amount;
+        }
+        else if (totalExperience + amount >= MaxXp)
+                {
+            totalExperience = MaxXp;
+            currentlevel = MaxLevel;
+            experienceFill.fillAmount = 1;
+        }
+
+
+
         CheckForLevelUp();
         Updateinterface();
             
@@ -62,7 +87,7 @@ public class ExpManager : MonoBehaviour
         previousLevelExperience = (int)experienceCurve.Evaluate(currentlevel);
         nextLevelExperience = (int)experienceCurve.Evaluate(currentlevel + 1);
         Updateinterface();
-        UpdateLevel();
+        CheckForLevelUp();
     }
 
 
