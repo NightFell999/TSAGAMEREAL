@@ -9,18 +9,21 @@ public class Player : MonoBehaviour
     public World world;
 
     //For Movement
+    [Header("For Movement")]
     [SerializeField]
     Rigidbody2D playerrb;
     public int speed;
     float speedLimit;
 
     [SerializeField]
+    [Header("Check Distance")]
     //For CheckDistance
     public float distanceWalked;
     Vector3 lastPos;
     Vector3 currentPos;
 
     [SerializeField]
+    [Header("Fight")]
     //For Start Fight
     public bool isInFight;
     public bool isPlayersTurn;
@@ -37,10 +40,15 @@ public class Player : MonoBehaviour
     public GameObject[] spells = new GameObject[4];
 
     //FOR SPELLS
+    [Header("Spells")]
     [SerializeField]
     public int spellCountMAX = 20; //HAS TO BE HIGHERR THAN CURRENT WHEN NOT IN FIGHT
     public int spellCountCURRENT;
     public int hits;
+
+    [Header("SpellBook")]
+    public bool isInSpellBook;
+
 
     bool EnemyTurnDoOnce = true;
 
