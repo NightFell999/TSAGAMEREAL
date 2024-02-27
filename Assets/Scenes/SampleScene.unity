@@ -16637,17 +16637,26 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 9.518781
-      value: 11664.498
-      inSlope: 4292.815
-      outSlope: 4292.815
+      time: 18.742191
+      value: 15765.055
+      inSlope: 2382.8945
+      outSlope: 2382.8945
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 19.812037
+      value: 27392.324
+      inSlope: 3237.5957
+      outSlope: 3237.5957
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.065797195
       outWeight: 1
     - serializedVersion: 3
-      time: 10
-      value: 25000
+      time: 20
+      value: 30000
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -16657,8 +16666,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MaxLevel: 10
-  MaxXp: 25000
+  MaxLevel: 0
+  MaxXp: 0
   currentlevel: 0
   totalExperience: 0
   leveltext: {fileID: 457368631}

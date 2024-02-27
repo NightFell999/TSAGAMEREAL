@@ -11,10 +11,10 @@ public class ExpManager : MonoBehaviour
 
     [Header("Experience")]
     [SerializeField] AnimationCurve experienceCurve;
-    public int MaxLevel;
-    public int MaxXp;
+    public float MaxLevel;
+    public float MaxXp;
 
-    public int currentlevel = 0, totalExperience = 0;
+    public float currentlevel = 0, totalExperience = 0;
     int previousLevelExperience, nextLevelExperience;
 
     [Header("interface")]
@@ -33,13 +33,17 @@ public class ExpManager : MonoBehaviour
     void Start()
     {
         UpdateLevel();
+
+        MaxXp = experienceCurve.keys[experienceCurve.keys.Length - 1].value;
+        MaxLevel = experienceCurve.keys[experienceCurve.keys.Length - 1].time;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-
+        
+        
         if (currentlevel >= MaxLevel)
         {
             Updateinterface();
@@ -96,8 +100,8 @@ public class ExpManager : MonoBehaviour
 
     void Updateinterface()
     {
-        int start = totalExperience - previousLevelExperience;
-        int end = nextLevelExperience - previousLevelExperience;
+        float start = totalExperience - previousLevelExperience;
+        float end = nextLevelExperience - previousLevelExperience;
 
         leveltext.text = currentlevel.ToString();
         experiencetext.text = start + " Exp /" + end + " Exp";
