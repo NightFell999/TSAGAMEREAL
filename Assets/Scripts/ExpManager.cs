@@ -14,7 +14,7 @@ public class ExpManager : MonoBehaviour
     public int MaxLevel;
     public int MaxXp;
 
-    int currentlevel = 0, totalExperience = 0;
+    public int currentlevel = 0, totalExperience = 0;
     int previousLevelExperience, nextLevelExperience;
 
     [Header("interface")]
@@ -38,14 +38,18 @@ public class ExpManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (currentlevel >= MaxLevel)
         {
-          
+            Updateinterface();
+            currentlevel = MaxLevel;
             experiencetext.text = "MAX Level";
+            experienceFill.fillAmount = 1;
         }
         if (Input.GetKeyUp(KeyCode.P)) 
         {
-            addexperience(5000);
+            addexperience(500);
         }
     }
 
@@ -62,7 +66,6 @@ public class ExpManager : MonoBehaviour
         else if (totalExperience + amount >= MaxXp)
                 {
             totalExperience = MaxXp;
-            currentlevel = MaxLevel;
             experienceFill.fillAmount = 1;
         }
 
