@@ -53,19 +53,20 @@ public class FightUI : MonoBehaviour
             round = 0;
             UITracker = 0;
             fightScript.EndFight();
-            fightUI.SetActive(false);
+            fightUICanvas.enabled = false;
+            
             enemyUI.SetActive(false);
         }
 
 
-
-
-        currentenemy = fightScript.finalenemylist[round];
-        enemyScript = currentenemy.GetComponent<Enemy>();
-        if(round == fightScript.finalenemylist.Length)
+        if (round == fightScript.finalenemylist.Length)
         {
             round = 0;
         }
+
+        currentenemy = fightScript.finalenemylist[round];
+        enemyScript = currentenemy.GetComponent<Enemy>();
+        
 
 
         if(player.spellCountMAX == player.spellCountCURRENT && UITracker == 1)
@@ -95,7 +96,8 @@ public class FightUI : MonoBehaviour
         {
             Debug.Log("Choose A Spell");
             preTextUI.SetActive(false);
-            fightUI.SetActive(true);
+            fightUICanvas.enabled = true;
+            
         }
         else if(UITracker == 2)
         {
@@ -119,7 +121,7 @@ public class FightUI : MonoBehaviour
 
 
             fightUICanvas.enabled = true;
-            fightUI.SetActive(false);
+            
 
             enemyUI.SetActive(true);
         }
