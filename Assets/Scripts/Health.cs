@@ -52,9 +52,24 @@ public class Health : MonoBehaviour
         }
         //
 
-        fight.finalenemylist[randomEnemy].GetComponent<Enemy>().enemycurrentHealth -= damage;
-        Debug.Log("Did " + damage + " damage.");
+        bool hasPositiveHealth = false;
 
+        while(hasPositiveHealth != true)
+        {
+            if(fight.finalenemylist[randomEnemy].GetComponent<Enemy>().enemycurrentHealth > 0) {
+
+                fight.finalenemylist[randomEnemy].GetComponent<Enemy>().enemycurrentHealth -= damage;
+                hasPositiveHealth = true;
+            }
+            else
+            {
+                randomEnemy = Random.Range(0, fight.finalenemylist.Length);
+            }
+
+
+        }
+
+        Debug.Log("Did " + damage + " damage.");
     }
 
     public void DamageAllEnemy()

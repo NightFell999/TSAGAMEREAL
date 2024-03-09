@@ -36,7 +36,7 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         FightUICanvas = fightUI.GetComponentInChildren<Canvas>();
     }
 
-    
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -101,7 +101,7 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
 
-           
+
     }
 
     public void CastSpell(GameObject summonPosition)
@@ -109,26 +109,31 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         fightUI = GameObject.Find("FightUI");
         player = GameObject.Find("Player").GetComponent<Player>();
 
+        FightUICanvas = fightUI.GetComponentInChildren<Canvas>();
+        FightUICanvas.enabled = false;
+        Debug.Log(FightUICanvas);
+
         Fight fight = player.GetComponent<Fight>();
 
         fight.currentSpell = gameObject.GetComponent<Spell>();
 
         Debug.Log(player.name);
-            
-            player.spellCountCURRENT = 0;
-            player.spellCountMAX = spellCount;
-            player.hits = 0;
+
+        player.spellCountCURRENT = 0;
+        player.spellCountMAX = spellCount;
+        player.hits = 0;
 
         
-        if(player.isPlayersTurn == true)
-        {
-            FightUICanvas.enabled = false;
-        }
-        
+
+
 
         Instantiate(spellBlockContainer, summonPosition.transform.position, summonPosition.transform.rotation);
 
     }
+
+
+
+
 
 
 }

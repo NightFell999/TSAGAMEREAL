@@ -19,11 +19,13 @@ public class FightUI : MonoBehaviour
     public GameObject pos3;
     public GameObject pos4;
     bool doOnce = true;
+    bool doOnce2 = true;
     public GameObject currentenemy;
     public int round = 0;
     bool doDamageOnce = true;
     bool[] deathArray;
     bool allDead;
+    public int randomEnemySpell;
     
 
 
@@ -90,23 +92,35 @@ public class FightUI : MonoBehaviour
 
         if(UITracker == 0 && player.isInFight == true)
         {
+            player.spellCountCURRENT = 0;
+            doOnce = true;
+            doOnce2 = true;
+            doDamageOnce = true;
+            player.isPlayersTurn = true;
             preTextUI.SetActive(true);
         }
         else if(UITracker == 1)
         {
             Debug.Log("Choose A Spell");
             preTextUI.SetActive(false);
-            fightUICanvas.enabled = true;
+
+            if (doOnce2)
+            {
+
+                fightUICanvas.enabled = true;
+                doOnce2 = false;
+            }
             
         }
         else if(UITracker == 2)
         {
             Debug.Log("Do Damage");
-            
-            
+
 
             if(doDamageOnce == true)
             {
+                
+
                 if (fightScript.currentSpell.singleTarget == true)
                 {
                     health.DamageSingleEnemy();
@@ -120,8 +134,8 @@ public class FightUI : MonoBehaviour
             }
 
 
-            fightUICanvas.enabled = true;
-            
+
+            randomEnemySpell = Random.Range(0, enemyScript.spells.Length);
 
             enemyUI.SetActive(true);
         }
@@ -138,7 +152,7 @@ public class FightUI : MonoBehaviour
             Debug.Log("Enemies Turn");
             Debug.Log(enemySummon.name);
             enemyUI.SetActive(false);
-            int randomEnemySpell = Random.Range(0, enemyScript.spells.Length);
+            
             if(doOnce == true)
             {
                 currentenemy.GetComponent<Enemy>().spells[randomEnemySpell].GetComponent<Spell>().CastSpell(enemySummon);
@@ -149,6 +163,7 @@ public class FightUI : MonoBehaviour
         else if(UITracker == 4)
         {
             doOnce = true;
+            doOnce2 = true;
             if(round == fightScript.finalenemylist.Length - 1)
             {
                 round = 0;

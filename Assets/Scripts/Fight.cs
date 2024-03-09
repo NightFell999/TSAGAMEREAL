@@ -7,6 +7,7 @@ public class Fight : MonoBehaviour
     public Player p;
     public World w;
     public int fightRound = 0;
+    public UIScript uiScript;
 
 
 
@@ -53,6 +54,7 @@ public class Fight : MonoBehaviour
 
     public void EndFight()
     {
+        uiScript.turnOffUI = false;
         p.spellCountMAX = 20;
         p.spellCountCURRENT = 0;
         p.hits = 0;
@@ -71,6 +73,7 @@ public class Fight : MonoBehaviour
 
     public void StartFight(GameObject e1, GameObject e2, GameObject e3, GameObject e4)
     {
+        uiScript.turnOffUI = true;
         Debug.Log("Fight started");
 
         char1.transform.position = char1FightPos.transform.position;
