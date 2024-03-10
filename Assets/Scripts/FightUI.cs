@@ -44,6 +44,8 @@ public class FightUI : MonoBehaviour
     }
 
 
+
+
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +56,7 @@ public class FightUI : MonoBehaviour
         {
             round = 0;
             UITracker = 0;
+            
             fightScript.EndFight();
             fightUICanvas.enabled = false;
             
@@ -141,9 +144,10 @@ public class FightUI : MonoBehaviour
         }
         else if(UITracker == 3)
         {
-            if(currentenemy.GetComponent<Enemy>().isDead == true)
+            while(currentenemy.GetComponent<Enemy>().isDead == true)
             {
                 round += 1;
+                currentenemy = fightScript.finalenemylist[round];
             }
 
 

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Health : MonoBehaviour
 {
     public int PlayermaxHealth;
-    public int playerminHealth; 
+    public int playerminHealth;
+    public GameObject MovingText;
 
 
     // Start is called before the first frame update
@@ -60,6 +62,7 @@ public class Health : MonoBehaviour
 
                 fight.finalenemylist[randomEnemy].GetComponent<Enemy>().enemycurrentHealth -= damage;
                 hasPositiveHealth = true;
+                DamageText(damage, fight.finalenemylist[randomEnemy]);
             }
             else
             {
@@ -68,6 +71,8 @@ public class Health : MonoBehaviour
 
 
         }
+
+
 
         Debug.Log("Did " + damage + " damage.");
     }
@@ -80,5 +85,13 @@ public class Health : MonoBehaviour
 
     }
 
+
+    public void DamageText(int Damage, GameObject location)
+    {
+
+        GameObject damageText = Instantiate(MovingText, location.transform.position + new Vector3(2f, 2f, 0), MovingText.transform.rotation);
+        damageText.GetComponentInChildren<TextMeshPro>().text = Damage.ToString();
+
+    }
     
 }
