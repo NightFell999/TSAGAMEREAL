@@ -104,7 +104,7 @@ public class FightUI : MonoBehaviour
         }
         else if(UITracker == 1)
         {
-            Debug.Log("Choose A Spell");
+            
             preTextUI.SetActive(false);
 
             if (doOnce2)
@@ -117,7 +117,7 @@ public class FightUI : MonoBehaviour
         }
         else if(UITracker == 2)
         {
-            Debug.Log("Do Damage");
+           
 
 
             if(doDamageOnce == true)
@@ -147,14 +147,17 @@ public class FightUI : MonoBehaviour
             while(currentenemy.GetComponent<Enemy>().isDead == true)
             {
                 round += 1;
+                if (round >= fightScript.finalenemylist.Length)
+                {
+                    round = 0;
+                }
                 currentenemy = fightScript.finalenemylist[round];
             }
 
 
             doDamageOnce = true;
 
-            Debug.Log("Enemies Turn");
-            Debug.Log(enemySummon.name);
+            
             enemyUI.SetActive(false);
             
             if(doOnce == true)

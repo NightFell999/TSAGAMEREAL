@@ -41,14 +41,14 @@ public class NPC : MonoBehaviour
 
         if (!isTyping)
         {
-            Debug.Log("Continue");
+            
             contButton.SetActive(true);
         }
     }
 
     public void TextProgression()
     {
-        Debug.Log("Is this working");
+        
         startPoint = stopPoints[currentStopPoint];
         currentStopPoint += 1;
         
@@ -69,7 +69,7 @@ public class NPC : MonoBehaviour
 
     IEnumerator Typing()
     {
-        Debug.Log(dialogue[index].ToCharArray());
+        
         isTyping = true;
         foreach (char letter in dialogue[index].ToCharArray())
         {

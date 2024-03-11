@@ -19,7 +19,7 @@ public class Rock : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && inRange == true && npc.completedAvailableText == true)
         { 
-            Debug.Log("WORKING");
+            
             if (npc.currentStopPoint == 0)
             {
                 npc.completedAvailableText = false;

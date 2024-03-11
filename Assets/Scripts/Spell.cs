@@ -111,13 +111,13 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         FightUICanvas = fightUI.GetComponentInChildren<Canvas>();
         FightUICanvas.enabled = false;
-        Debug.Log(FightUICanvas);
+        
 
         Fight fight = player.GetComponent<Fight>();
 
         fight.currentSpell = gameObject.GetComponent<Spell>();
 
-        Debug.Log(player.name);
+        
 
         player.spellCountCURRENT = 0;
         player.spellCountMAX = spellCount;

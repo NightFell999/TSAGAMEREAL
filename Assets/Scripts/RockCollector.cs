@@ -20,7 +20,7 @@ public class RockCollector : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && inRange == true)
         {
 
-            Debug.Log("WORKING");
+            
             if (npc.currentStopPoint == 0)
             {
                 npc.TextProgression();

@@ -36,7 +36,7 @@ public class Fight : MonoBehaviour
     {
         
 
-        Debug.Log("Started");
+        
         p = gameObject.GetComponent<Player>();
         w = GameObject.Find("World1").GetComponent<World>();
 
@@ -60,7 +60,7 @@ public class Fight : MonoBehaviour
         p.hits = 0;
         p.distanceWalked = 0;
         p.fightChance = 100;
-        Debug.Log("Fight has ended");
+        
         char1.transform.position = p.savePos;
 
         p.isInFight = false;
@@ -74,7 +74,7 @@ public class Fight : MonoBehaviour
     public void StartFight(GameObject e1, GameObject e2, GameObject e3, GameObject e4)
     {
         uiScript.turnOffUI = true;
-        Debug.Log("Fight started");
+        
 
         char1.transform.position = char1FightPos.transform.position;
         p.isInFight = true;
@@ -136,7 +136,7 @@ public class Fight : MonoBehaviour
             }
             else
             {
-                Debug.Log(firstenemylist[i] + " is null");
+                
             }
         }
     }
