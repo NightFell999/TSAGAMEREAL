@@ -425,8 +425,8 @@ MonoBehaviour:
   fightUI: {fileID: 0}
   spellName: Test
   spellDescription: This is a test
-  spellDMG: 1
+  spellDMG: 3
   singleTarget: 1
-  spellDifficulty: 0
+  spellDifficulty: 1
   spellBlockContainer: {fileID: 4146110114118948048, guid: 79891b623c8cde440b7e351a118bf662, type: 3}
   spellCount: 7

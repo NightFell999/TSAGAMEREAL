@@ -39,7 +39,7 @@ public class HealthBarEnemy : MonoBehaviour
         {
 
 
-            GameObject ui = Instantiate(HealthBarUI, canvas.transform, true);
+            GameObject ui = Instantiate(HealthBarUI, canvas.transform, false);
             ui.GetComponent<RectTransform>().anchoredPosition = startPos + (counter * new Vector3(200, 0, 0));
             counter += 1;
             
@@ -62,8 +62,9 @@ public class HealthBarEnemy : MonoBehaviour
         {
             for(int i = 0; i < HealthBarUIArray.Length; i++)
             {
-                if(HealthBarUIArray[i].GetComponentInChildren<Image>().fillAmount > (fightScript.finalenemylist[i].GetComponent<Enemy>().enemycurrentHealth / fightScript.finalenemylist[i].GetComponent<Enemy>().enemymaxHealth)){
+                if(HealthBarUIArray[i].GetComponentInChildren<Image>().fillAmount > ((float)(fightScript.finalenemylist[i].GetComponent<Enemy>().enemycurrentHealth) / (fightScript.finalenemylist[i].GetComponent<Enemy>().enemymaxHealth))){
                     HealthBarUIArray[i].GetComponentInChildren<Image>().fillAmount -= 0.005f;
+
                 }
             }
             

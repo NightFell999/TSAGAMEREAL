@@ -70,6 +70,21 @@ public class FightUI : MonoBehaviour
         }
 
         currentenemy = fightScript.finalenemylist[round];
+
+        if(currentenemy.GetComponent<Enemy>().isDead == true)
+        {
+            round += 1;
+
+            if (round == fightScript.finalenemylist.Length)
+            {
+                round = 0;
+            }
+
+            currentenemy = fightScript.finalenemylist[round];
+
+        }
+
+        
         enemyScript = currentenemy.GetComponent<Enemy>();
         
 
@@ -144,15 +159,9 @@ public class FightUI : MonoBehaviour
         }
         else if(UITracker == 3)
         {
-            while(currentenemy.GetComponent<Enemy>().isDead == true)
-            {
-                round += 1;
-                if (round >= fightScript.finalenemylist.Length)
-                {
-                    round = 0;
-                }
-                currentenemy = fightScript.finalenemylist[round];
-            }
+            
+
+
 
 
             doDamageOnce = true;
@@ -169,6 +178,7 @@ public class FightUI : MonoBehaviour
         }
         else if(UITracker == 4)
         {
+            health.DamagePlayer();
             doOnce = true;
             doOnce2 = true;
             if(round == fightScript.finalenemylist.Length - 1)
@@ -202,5 +212,6 @@ public class FightUI : MonoBehaviour
         return true;
 
     }
+
     
 }

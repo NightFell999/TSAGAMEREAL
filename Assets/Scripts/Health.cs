@@ -6,7 +6,7 @@ using TMPro;
 public class Health : MonoBehaviour
 {
     public int PlayermaxHealth;
-    public int playerminHealth;
+    public int playercurrentHealth;
     public GameObject MovingText;
 
 
@@ -24,7 +24,34 @@ public class Health : MonoBehaviour
 
     public void DamagePlayer()
     {
-        
+
+        Player player = GameObject.Find("Player").GetComponent<Player>();
+        Fight fight = GameObject.Find("Player").GetComponent<Fight>();
+
+
+
+        //Damage Calculation
+        float perfectModifier;
+
+        if (player.spellCountCURRENT == player.spellCountMAX)
+        {
+            perfectModifier = (1 + (.25f * fight.currentSpell.spellDifficulty));
+            DamageText("Perfect Defence", GameObject.Find("Player"));
+        }
+        else
+        {
+            perfectModifier = 1;
+        }
+        int damage = (int)((fight.currentSpell.spellDMG - (fight.currentSpell.spellDifficulty * (1 + ((player.hits * .15))) * perfectModifier)));
+
+        if (damage < 0)
+        {
+            damage = 0;
+        }
+
+        playercurrentHealth -= damage;
+        DamageText(damage.ToString(), GameObject.Find("Player"));
+        //
     }
 
     public void DamageSingleEnemy()
@@ -36,17 +63,18 @@ public class Health : MonoBehaviour
 
 
         //Damage Calculation
-        int perfectModifier;
+        float perfectModifier;
 
         if(player.spellCountCURRENT == player.spellCountMAX)
         {
-            perfectModifier = 2;
+            perfectModifier = (1 + (.25f * fight.currentSpell.spellDifficulty));
+            DamageText("Perfect Attack", GameObject.Find("Player"));
         }
         else
         {
             perfectModifier = 1;
         }
-        int damage = (int)((fight.currentSpell.spellDMG + 1.25f * (player.spellCountCURRENT - (player.spellCountMAX / 2))) * perfectModifier);
+        int damage = (int)((fight.currentSpell.spellDMG + (fight.currentSpell.spellDifficulty * (1 + (player.hits * .15))) * perfectModifier));
 
         if(damage < 0)
         {
@@ -62,7 +90,7 @@ public class Health : MonoBehaviour
 
                 fight.finalenemylist[randomEnemy].GetComponent<Enemy>().enemycurrentHealth -= damage;
                 hasPositiveHealth = true;
-                DamageText(damage, fight.finalenemylist[randomEnemy]);
+                DamageText(damage.ToString(), fight.finalenemylist[randomEnemy]);
             }
             else
             {
@@ -86,11 +114,18 @@ public class Health : MonoBehaviour
     }
 
 
-    public void DamageText(int Damage, GameObject location)
+    public void DamageText(string Damage, GameObject location)
     {
+        int xValue = 2;
 
-        GameObject damageText = Instantiate(MovingText, location.transform.position + new Vector3(2f, 2f, 0), MovingText.transform.rotation);
-        damageText.GetComponentInChildren<TextMeshPro>().text = Damage.ToString();
+        if(Damage == "Perfect Defence")
+        {
+            xValue = -3;
+        }
+
+
+        GameObject damageText = Instantiate(MovingText, location.transform.position + new Vector3(xValue, 2f, 0), MovingText.transform.rotation);
+        damageText.GetComponentInChildren<TextMeshPro>().text = Damage;
 
     }
     

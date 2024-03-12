@@ -8,9 +8,9 @@ public class Fight : MonoBehaviour
     public World w;
     public int fightRound = 0;
     public UIScript uiScript;
+    public HealthBarEnemy hbe;
 
-
-
+    
     GameObject char1;
     GameObject char1FightPos;
     GameObject e1FightPos;
@@ -54,6 +54,7 @@ public class Fight : MonoBehaviour
 
     public void EndFight()
     {
+        hbe.counter = 0;
         uiScript.turnOffUI = false;
         p.spellCountMAX = 20;
         p.spellCountCURRENT = 0;

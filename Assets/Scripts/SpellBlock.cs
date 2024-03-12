@@ -10,10 +10,12 @@ public class SpellBlock : MonoBehaviour
     public GameObject container;
     public Spell spell;
     public Player player;
+    public Fight fight;
 
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
+        fight = GameObject.Find("Player").GetComponent<Fight>();
         rb = gameObject.GetComponent<Rigidbody2D>();
 
         speed = -1 * speed;
@@ -22,7 +24,8 @@ public class SpellBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(0, speed);
+        rb.velocity = new Vector2(0, speed) * fight.currentSpell.GetComponent<Spell>().spellDifficulty;
+        
     }
 
     public void KillbyArrow()
