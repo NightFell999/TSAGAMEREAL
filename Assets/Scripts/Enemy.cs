@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public bool isEmpty;
     public bool isDead;
     public GameObject[] spells;
+    public int experience;
 
 
     private void Update()

@@ -10,7 +10,7 @@ public class Fight : MonoBehaviour
     public UIScript uiScript;
     public HealthBarEnemy hbe;
 
-    
+    ExpManager xpManager;
     GameObject char1;
     GameObject char1FightPos;
     GameObject e1FightPos;
@@ -27,6 +27,7 @@ public class Fight : MonoBehaviour
     public GameObject[] firstenemylist = new GameObject[4];
     public GameObject[] finalenemylist;
     public Spell currentSpell;
+    public int TotalXP;
 
     bool DoOnce = true;
 
@@ -61,6 +62,7 @@ public class Fight : MonoBehaviour
         p.hits = 0;
         p.distanceWalked = 0;
         p.fightChance = 100;
+        xpManager.addexperience(TotalXP);
         
         char1.transform.position = p.savePos;
 
@@ -140,6 +142,8 @@ public class Fight : MonoBehaviour
                 
             }
         }
+
+        TotalXP = enemyScript1.experience + enemyScript2.experience + enemyScript3.experience + enemyScript4.experience;
     }
 
 

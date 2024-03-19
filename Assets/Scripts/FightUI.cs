@@ -26,6 +26,7 @@ public class FightUI : MonoBehaviour
     bool[] deathArray;
     bool allDead;
     public int randomEnemySpell;
+    public int totalXP;
     
 
 
@@ -49,7 +50,6 @@ public class FightUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         allDead = AllDead(fightScript.finalenemylist);
 
         if(allDead == true)
