@@ -167,13 +167,14 @@ public class FightUI : MonoBehaviour
             doDamageOnce = true;
 
             
-            enemyUI.SetActive(false);
             
             if(doOnce == true)
             {
                 currentenemy.GetComponent<Enemy>().spells[randomEnemySpell].GetComponent<Spell>().CastSpell(enemySummon);
                 doOnce = false;
             }
+
+            enemyUI.SetActive(false);
 
         }
         else if(UITracker == 4)

@@ -2,24 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    public int PlayermaxHealth;
-    public int playercurrentHealth;
+    public float PlayermaxHealth;
+    public float playercurrentHealth;
     public GameObject MovingText;
+    public Image healthBar;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playercurrentHealth = PlayermaxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(healthBar.fillAmount > playercurrentHealth/ PlayermaxHealth)
+        {
+            healthBar.fillAmount -= 0.005f;
+        }
     }
 
     public void DamagePlayer()
@@ -33,7 +38,7 @@ public class Health : MonoBehaviour
         //Damage Calculation
         float perfectModifier;
 
-        if (player.spellCountCURRENT == player.spellCountMAX)
+        if (player.hits == player.spellCountMAX)
         {
             perfectModifier = (1 + (.25f * fight.currentSpell.spellDifficulty));
             DamageText("Perfect Defence", GameObject.Find("Player"));
@@ -48,6 +53,8 @@ public class Health : MonoBehaviour
         {
             damage = 0;
         }
+
+        Debug.Log("Player took " + damage + " damage");
 
         playercurrentHealth -= damage;
         DamageText(damage.ToString(), GameObject.Find("Player"));
@@ -65,7 +72,7 @@ public class Health : MonoBehaviour
         //Damage Calculation
         float perfectModifier;
 
-        if(player.spellCountCURRENT == player.spellCountMAX)
+        if(player.hits == player.spellCountMAX)
         {
             perfectModifier = (1 + (.25f * fight.currentSpell.spellDifficulty));
             DamageText("Perfect Attack", GameObject.Find("Player"));

@@ -16,6 +16,7 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public bool isHovering = false;
     public Sprite spellSprite;
     public GameObject fightUI;
+    public GameObject enemyUI;
 
     //Spell Stuff
     public string spellName;
@@ -107,27 +108,32 @@ public class Spell : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void CastSpell(GameObject summonPosition)
     {
         fightUI = GameObject.Find("FightUI");
+        enemyUI = GameObject.Find("EnemyUI");
         player = GameObject.Find("Player").GetComponent<Player>();
 
         FightUICanvas = fightUI.GetComponentInChildren<Canvas>();
-        FightUICanvas.enabled = false;
-        
+        if(FightUICanvas.enabled == true || enemyUI.activeSelf == true)
+        {
+            Debug.Log("FIREBALL");
+            FightUICanvas.enabled = false;
 
-        Fight fight = player.GetComponent<Fight>();
 
-        fight.currentSpell = gameObject.GetComponent<Spell>();
+            Fight fight = player.GetComponent<Fight>();
 
-        
-
-        player.spellCountCURRENT = 0;
-        player.spellCountMAX = spellCount;
-        player.hits = 0;
-
-        
+            fight.currentSpell = gameObject.GetComponent<Spell>();
 
 
 
-        Instantiate(spellBlockContainer, summonPosition.transform.position, summonPosition.transform.rotation);
+            player.spellCountCURRENT = 0;
+            player.spellCountMAX = spellCount;
+            player.hits = 0;
+
+
+
+
+
+            Instantiate(spellBlockContainer, summonPosition.transform.position, summonPosition.transform.rotation);
+        }
 
     }
 
