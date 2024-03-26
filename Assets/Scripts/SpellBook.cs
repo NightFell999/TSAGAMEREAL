@@ -25,6 +25,11 @@ public class SpellBook : MonoBehaviour
     {
         spellBook.SetActive(false);
         UI.SetActive(true);
+
+        cantrip.SetActive(false);
+        terra.SetActive(false);
+        serpentine.SetActive(false);
+        ashborn.SetActive(false);
     }
 
     public void Cantrip()
