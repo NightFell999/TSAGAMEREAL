@@ -425,7 +425,7 @@ MonoBehaviour:
   fightUI: {fileID: 0}
   enemyUI: {fileID: 0}
   spellName: Water Sprout
-  spellDescription: drown them
+  spellDescription: Does Damage
   spellDMG: 3
   singleTarget: 0
   spellDifficulty: 1
