@@ -9,7 +9,7 @@ public class NPC : MonoBehaviour
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
     public string[] dialogue;
-    private int index;
+    public int index;
 
     public GameObject contButton;
     public float wordspeed;
@@ -82,13 +82,14 @@ public class NPC : MonoBehaviour
 
     public void NextLine()
     {
-        completedAvailableText = true;
+        
         if (index == stopPoints[currentStopPoint] - 1)
         {
             zeroText();
         }
         if (index < dialogue.Length - 1)
         {
+            Debug.Log("PLEASE WORK");
             index++;
             dialogueText.text = " ";
             StopAllCoroutines();
