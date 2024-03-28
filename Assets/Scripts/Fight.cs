@@ -74,6 +74,10 @@ public class Fight : MonoBehaviour
         }
     }
 
+
+
+
+
     public void StartFight(GameObject e1, GameObject e2, GameObject e3, GameObject e4)
     {
         uiScript.turnOffUI = true;

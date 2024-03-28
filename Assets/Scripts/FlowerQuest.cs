@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class FlowerQuest : MonoBehaviour
 {
-    GameObject Dealer;
-    GameObject Flower;
-    GameObject Buyer;
+    public GameObject Dealer;
+    public GameObject Flower;
+    public GameObject Buyer;
+    public GameObject Fighter;
+    public FightWhenDoneTalking fwdt;
 
 
     // Start is called before the first frame update
@@ -22,5 +24,16 @@ public class FlowerQuest : MonoBehaviour
         {
             Buyer.GetComponent<NPC>().currentStopPoint = 1;
         }
+
+        if(Buyer.GetComponent<NPC>().currentStopPoint == 1 && Buyer.GetComponent<NPC>().completedAvailableText == true)
+        {
+            Fighter.GetComponent<NPC>().currentStopPoint = 1;
+        }
+
+        if (Fighter.GetComponent<NPC>().currentStopPoint == 1 && Fighter.GetComponent<NPC>().completedAvailableText == true)
+        {
+            fwdt.reallyDoneTalking = true;
+        }
+
     }
 }
