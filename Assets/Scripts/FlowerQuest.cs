@@ -5,6 +5,7 @@ using UnityEngine;
 public class FlowerQuest : MonoBehaviour
 {
     public bool hasKey = false;
+    
     public GameObject Dealer;
     public GameObject Flower;
     public GameObject Buyer;
