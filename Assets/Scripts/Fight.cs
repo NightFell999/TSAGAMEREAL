@@ -18,6 +18,7 @@ public class Fight : MonoBehaviour
     GameObject e3FightPos;
     GameObject e4FightPos;
     Vector3 savePos2;
+    public Health health;
 
     Enemy enemyScript1;
     Enemy enemyScript2;
@@ -59,6 +60,7 @@ public class Fight : MonoBehaviour
         uiScript.turnOffUI = false;
         p.spellCountMAX = 20;
         p.spellCountCURRENT = 0;
+        health.playercurrentHealth = health.PlayermaxHealth;
         p.hits = 0;
         p.distanceWalked = 0;
         p.fightChance = 100;
