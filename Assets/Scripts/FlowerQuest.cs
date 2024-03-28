@@ -10,6 +10,7 @@ public class FlowerQuest : MonoBehaviour
     public GameObject Fighter;
     public Fight fight;
     public FightWhenDoneTalking fwdt;
+    bool doOnce = true;
 
     public GameObject empty;
 
@@ -25,6 +26,8 @@ public class FlowerQuest : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         
         fight.StartFight(Fighter, empty, empty, empty);
+        fight.finalenemylist[0] = Fighter;
+        Fighter.GetComponent<NPC>().dialoguePanel.SetActive(false);
         StopCoroutine("WaitPLS");
     }
 
@@ -43,8 +46,9 @@ public class FlowerQuest : MonoBehaviour
             Fighter.GetComponent<NPC>().currentStopPoint = 1;
         }
 
-        if (Fighter.GetComponent<NPC>().currentStopPoint == 1 && Fighter.GetComponent<NPC>().index == Fighter.GetComponent<NPC>().dialogue.Length - 1)
+        if (Fighter.GetComponent<NPC>().currentStopPoint == 1 && Fighter.GetComponent<NPC>().index == Fighter.GetComponent<NPC>().dialogue.Length - 1 && doOnce == true)
         {
+            doOnce = false;
             Debug.Log("HELLO");
             StartCoroutine("WaitPLS");
 
