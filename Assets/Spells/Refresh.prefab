@@ -51,7 +51,7 @@ MonoBehaviour:
   button: {fileID: 7123548212784342020}
   player: {fileID: 0}
   isHovering: 0
-  spellSprite: {fileID: 21300000, guid: 65e84e8206d6eeb48925e111713ae79b, type: 3}
+  spellSprite: {fileID: 0}
   fightUI: {fileID: 0}
   enemyUI: {fileID: 0}
   spellName: Refresh
