@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovementAnimation : MonoBehaviour
 {
     public Animator animator;
+    Vector2 movement;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,19 +15,11 @@ public class PlayerMovementAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((gameObject.GetComponent<Rigidbody2D>().velocity.x != 0 || gameObject.GetComponent<Rigidbody2D>().velocity.y != 0) && gameObject.GetComponent<Rigidbody2D>().velocity.y > 0)
-        {
-            animator.parameters[0].Equals(true);
-            animator.parameters[1].Equals(false);
-        }
-        else if ((gameObject.GetComponent<Rigidbody2D>().velocity.x != 0 || gameObject.GetComponent<Rigidbody2D>().velocity.y != 0))
-        {
-            animator.parameters[0].Equals(false);
-            animator.parameters[1].Equals(true);
-        }
 
-
-
-
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FlowerQuest : MonoBehaviour
 {
+    public bool hasKey = false;
     public GameObject Dealer;
     public GameObject Flower;
     public GameObject Buyer;
@@ -28,6 +29,7 @@ public class FlowerQuest : MonoBehaviour
         fight.StartFight(Fighter, empty, empty, empty);
         fight.finalenemylist[0] = Fighter;
         Fighter.GetComponent<NPC>().dialoguePanel.SetActive(false);
+        hasKey = true;
         StopCoroutine("WaitPLS");
     }
 
