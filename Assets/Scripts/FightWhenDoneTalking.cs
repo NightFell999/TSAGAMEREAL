@@ -25,6 +25,7 @@ public class FightWhenDoneTalking : MonoBehaviour
         if(reallyDoneTalking == true && doOnce == true)
         {
             fight.StartFight(enem1, enem2, enem3, enem4);
+            doOnce = false;
         }
     }
 }

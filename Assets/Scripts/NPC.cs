@@ -48,7 +48,7 @@ public class NPC : MonoBehaviour
 
     public void TextProgression()
     {
-        
+
         startPoint = stopPoints[currentStopPoint];
         currentStopPoint += 1;
         
@@ -82,7 +82,7 @@ public class NPC : MonoBehaviour
 
     public void NextLine()
     {
-        
+        completedAvailableText = true;
         if (index == stopPoints[currentStopPoint] - 1)
         {
             zeroText();
