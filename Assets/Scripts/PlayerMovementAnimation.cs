@@ -16,13 +16,13 @@ public class PlayerMovementAnimation : MonoBehaviour
     {
         if((gameObject.GetComponent<Rigidbody2D>().velocity.x != 0 || gameObject.GetComponent<Rigidbody2D>().velocity.y != 0) && gameObject.GetComponent<Rigidbody2D>().velocity.y > 0)
         {
-            Debug.Log("UP");
-            animator.SetTrigger("Is Moving Up");
+            animator.parameters[0].Equals(true);
+            animator.parameters[1].Equals(false);
         }
         else if ((gameObject.GetComponent<Rigidbody2D>().velocity.x != 0 || gameObject.GetComponent<Rigidbody2D>().velocity.y != 0))
         {
-            Debug.Log("NOT UP");
-            animator.SetTrigger("Is Moving");
+            animator.parameters[0].Equals(false);
+            animator.parameters[1].Equals(true);
         }
 
 
