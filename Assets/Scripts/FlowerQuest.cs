@@ -8,7 +8,10 @@ public class FlowerQuest : MonoBehaviour
     public GameObject Flower;
     public GameObject Buyer;
     public GameObject Fighter;
+    public Fight fight;
     public FightWhenDoneTalking fwdt;
+
+    public GameObject empty;
 
 
     // Start is called before the first frame update
@@ -20,7 +23,9 @@ public class FlowerQuest : MonoBehaviour
     IEnumerator WaitPLS()
     {
         yield return new WaitForSeconds(1.5f);
-        fwdt.reallyDoneTalking = true;
+        
+        fight.StartFight(Fighter, empty, empty, empty);
+        StopCoroutine("WaitPLS");
     }
 
     // Update is called once per frame
@@ -38,7 +43,7 @@ public class FlowerQuest : MonoBehaviour
             Fighter.GetComponent<NPC>().currentStopPoint = 1;
         }
 
-        if (Fighter.GetComponent<NPC>().currentStopPoint == 1 && Fighter.GetComponent<NPC>().index == Fighter.GetComponent<NPC>().dialogue.Length)
+        if (Fighter.GetComponent<NPC>().currentStopPoint == 1 && Fighter.GetComponent<NPC>().index == Fighter.GetComponent<NPC>().dialogue.Length - 1)
         {
             Debug.Log("HELLO");
             StartCoroutine("WaitPLS");
